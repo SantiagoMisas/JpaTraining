@@ -31,12 +31,12 @@ public class SearchProductSpecification implements Specification<Product> {
             predicates.add(nameLikePredicate);
         }
 
-        if(minPrice != null && !minPrice.equals(BigDecimal.ZERO) ){
+        if(minPrice != null && !minPrice.equals(BigDecimal.ZERO) && minPrice.compareTo(BigDecimal.ZERO)>0 ){
             Predicate priceGreaterThanEqualPredicate = criteriaBuilder.greaterThanOrEqualTo(root.get("price"), minPrice);
             predicates.add(priceGreaterThanEqualPredicate);
         }
 
-        if(maxPrice != null && !maxPrice.equals(BigDecimal.ZERO) ){
+        if(maxPrice != null && !maxPrice.equals(BigDecimal.ZERO) && minPrice.compareTo(BigDecimal.ZERO)>0  ){
             Predicate priceLessThanEqualPredicate = criteriaBuilder.lessThanOrEqualTo(root.get("price"), maxPrice);
             predicates.add(priceLessThanEqualPredicate);
         }
